@@ -16,3 +16,5 @@ watch:
 
 $(OUT): $(SRC)
 	$(TYPST) compile $(TYPST_FLAGS) $(SRC) $(OUT)
+
+.PHONY: all compile clean watch
