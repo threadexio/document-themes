@@ -1,0 +1,93 @@
+#let black = rgb("#161616")
+#let black_bright = rgb("#656565")
+#let red = rgb("#9f3f3f")
+#let red_bright = rgb("#b65151")
+#let green = rgb("#89a057")
+#let green_bright = rgb("#a2b971")
+#let yellow = rgb("#e5b572")
+#let yellow_bright = rgb("#efc084")
+#let blue = rgb("#6696aa")
+#let blue_bright = rgb("#7daebc")
+#let magenta = rgb("#9f6f95")
+#let magenta_bright = rgb("#b685ad")
+#let cyan = rgb("#71aba1")
+#let cyan_bright = rgb("#8ec7b9")
+#let white = rgb("#cdcdcd")
+#let white_bright = rgb("#ebebeb")
+
+#let template(doc) = {
+  set page(
+    margin: 2cm,
+    fill: black,
+  )
+
+  set text(
+    font: "Cascadia Code NF",
+    weight: 400,
+    size: 11pt,
+    fill: rgb("#ece2d0")
+  )
+
+  set heading(numbering: "1.")
+  set par(leading: 1em, spacing: 2em)
+  set enum(indent: 1.5em)
+  show heading: set block(above: 2.5em, below: 1.5em)
+  show link: underline
+  show math.equation: set text(font: "DejaVu Math TeX Gyre")
+
+  doc
+}
+
+#let header(title, author) = {
+  set align(center)
+
+  text(size: 1.5em,
+    strong(underline(
+      title
+    ))
+  )
+
+  block(
+    inset: 0.75em,
+    above: 0.5em
+  )[
+    by #text(yellow_bright, author)
+  ]
+
+  linebreak()
+  linebreak()
+
+  outline()
+
+  linebreak()
+  linebreak()
+}
+
+#let code(body) = {
+  set align(center)
+  block(
+    fill: luma(35),
+    inset: 0.8em,
+    radius: 0.5em,
+    width: 85%,
+    sticky: true
+  )[
+    #set align(left)
+    #body
+  ]
+}
+
+#let note(body) = {
+  set align(center)
+  block(
+    fill: luma(35),
+    inset: 0.8em,
+    radius: 0.5em,
+    width: 85%,
+    stroke: 1pt + yellow,
+    sticky: true
+  )[
+    #set align(left)
+    #body
+  ]
+}
